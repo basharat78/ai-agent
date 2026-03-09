@@ -13,7 +13,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-       
-        return view('admin.dashboard.index');
+        $dispatcherCount = Dispatcher::count();
+        return view('admin.dashboard.index', compact('dispatcherCount'));
     }
 }

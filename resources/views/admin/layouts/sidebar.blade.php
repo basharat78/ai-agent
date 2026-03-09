@@ -58,7 +58,13 @@
             <li class="{{ setSidebarActive(['admin.dashboard.index']) }}"><a class="nav-link"
                     href="{{ route('admin.dashboard.index') }}"><i class="fas fa-fire"></i> <span>Dashboard</span></a>
             </li>
-         
+          <li class="menu-header">CRM Management</li>
+                  <li class="menu-header"></li>
+            <li class="{{ setSidebarActive(['admin.dispatchers.*']) ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.dispatchers.index') }}">
+                    <i class="fas fa-users"></i> <span>Dispatchers</span>
+                </a>
+            </li>
 
 
             
