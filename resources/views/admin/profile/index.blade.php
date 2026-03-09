@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('contents')
-@include('flash::message')
+{{-- @include('flash::message') --}}
     <section class="section">
         <div class="section-header">
             <div class="section-header-back">
@@ -23,9 +23,9 @@
                             <h4>Update Profile</h4>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('admin.profile.update') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('admin.profile.update') }}" method="POST"  enctype="multipart/form-data">
                                 @csrf
-                                @method('PUT')
+                                @method('POST')
                                 <div class="row">
                                  
                                
@@ -71,11 +71,11 @@
                         <div class="card-header">
                             <h4>Update Password</h4>
                         </div>
-                        <div class="card-body">
-                            <form action="{{ route('admin.profile-password.update') }}" method="POST"
+                         <div class="card-body">
+                            <form action="{{ route('admin.profile.password.update') }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
-                                @method('PUT')
+                                @method('POST')
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -101,7 +101,7 @@
 
                                 </div>
                             </form>
-                        </div>
+                        </div> 
                     </div>
                 </div>
             </div>
