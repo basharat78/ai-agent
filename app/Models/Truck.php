@@ -23,9 +23,19 @@ class Truck extends Model
         'max_weight',
   ];
 
+    protected $casts = [
+        'available_from' => 'datetime',
+    ];
+
     public function dispatcher(): BelongsTo
     {
         return $this->belongsTo(Dispatcher::class);
     }
+
+      public function accessories(): BelongsToMany
+    {
+        return $this->belongsToMany(Accessory::class, 'truck_accessory');
+    }
+
 
 }

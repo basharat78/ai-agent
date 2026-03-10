@@ -56,24 +56,44 @@ class TruckController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Truck $truck)
     {
-        //
+        $dispatchers = Dispatcher::where("is_active", true)->get();
+        return view("admin.trucks.edit", compact('truck', 'dispatchers'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+   public function update(Request $request, Truck $truck)
     {
-        //
+        $request->validate([
+            'dispatcher_id' => 'required|exists:dispatchers,id',
+            'truck_number' => 'required|max:50',
+            'driver_name' => 'required|max:100',
+            'driver_phone' => 'required|max:20',
+            'equipment_type' => 'required|in:dry_van,flatbed,reefer,step_deck',
+            'max_weight' => 'required|integer',
+            'available_from' => 'required|date',
+            'current_location' => 'required|max:255',
+            // 'accessories' => 'nullable|array',
+            // 'accessories.*' => 'exists:accessories,id'
+        ]);
+
+        $truck->update($request->all());
+        
+        // $truck->accessories()->sync($request->accessories ?? []);
+
+        return redirect()->route('admin.trucks.index')->with('success', 'Truck updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+     */ 
+
+    public function destroy(Truck $trucks)
     {
-        //
+        $trucks->delete();
+       return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
     }
 }

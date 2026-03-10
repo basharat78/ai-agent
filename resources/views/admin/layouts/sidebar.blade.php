@@ -65,12 +65,30 @@
                     <i class="fas fa-users"></i> <span>Dispatchers</span>
                 </a>
             </li>
-              <li class="{{ setSidebarActive(['admin.trucks.*']) ? 'active' : '' }}">
+              {{-- <li class="{{ setSidebarActive(['admin.trucks.*']) ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.trucks.index') }}">
+                    <i class="fas fa-truck"></i> <span>Trucks</span>
+                </a>
+            </li> --}}
+            
+               <li class="dropdown {{ setSidebarActive(['admin.trucks.*']) ? 'active' : '' }}">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-truck"></i>
+                    <span>Trucks</span></a>
+
+                <ul class="dropdown-menu">
+                        <li class="{{ setSidebarActive(['admin.trucks.*']) ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('admin.trucks.index') }}">
                     <i class="fas fa-truck"></i> <span>Trucks</span>
                 </a>
             </li>
-
+              <li class="{{ setSidebarActive(['admin.accessories.*']) ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.accessories.index') }}">
+                    <i class="fas fa-box"></i> <span>Accessories</span>
+                </a>
+            </li>
+                </ul>
+        
+    </li>
 
             
 

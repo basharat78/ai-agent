@@ -125,21 +125,37 @@
         </div>
       </div>
 
-      <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-        <div class="card card-statistic-1">
-          <div class="card-icon bg-success">
-            <i class="fas fa-check-circle"></i>
-          </div>
-          <div class="card-wrap">
-            <div class="card-header">
-              <h4>Scored </h4>
+   <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+            <div class="card card-statistic-1">
+                <div class="card-icon bg-primary">
+                    <i class="fas fa-truck"></i>
+                </div>
+                <div class="card-wrap">
+                    <div class="card-header">
+                        <h4>Total Trucks</h4>
+                    </div>
+                    <div class="card-body">
+                        {{ $truckCount }}
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-              
-            </div>
-          </div>
         </div>
-      </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+            <div class="card card-statistic-1">
+                <div class="card-icon bg-success">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="card-wrap">
+                    <div class="card-header">
+                        <h4>Available Trucks</h4>
+                    </div>
+                    <div class="card-body">
+                        {{ $availableTrucks }}
+                    </div>
+                </div>
+            </div>
+        </div>
 
       <div class="col-lg-3 col-md-6 col-sm-6 col-12">
         <div class="card card-statistic-1">
