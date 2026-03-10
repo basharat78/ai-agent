@@ -3,6 +3,8 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\DispatcherController;
+use App\Http\Controllers\Admin\TruckController;
+use App\Models\Truck;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth']], function () {
@@ -14,5 +16,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth']], 
     Route::post('profile/password', [ProfileController::class, 'PasswordUpdate'])->name('profile.password.update');
 
     Route::resource('dispatchers', DispatcherController::class);
-});
+    
+    Route::resource('trucks',TruckController::class);
 
+});

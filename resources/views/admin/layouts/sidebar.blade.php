@@ -65,6 +65,11 @@
                     <i class="fas fa-users"></i> <span>Dispatchers</span>
                 </a>
             </li>
+              <li class="{{ setSidebarActive(['admin.trucks.*']) ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.trucks.index') }}">
+                    <i class="fas fa-truck"></i> <span>Trucks</span>
+                </a>
+            </li>
 
 
             

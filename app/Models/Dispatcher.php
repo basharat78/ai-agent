@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Dispatcher extends Model
 {
@@ -17,4 +18,8 @@ class Dispatcher extends Model
         protected $casts = [   // Cast 'is_active' to boolean for proper handling in the application
         'is_active' => 'boolean',
     ];
+   public function trucks() : HasMany
+   {
+    return $this->hasMany(Truck::class);
+   }
 }
