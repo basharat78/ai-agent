@@ -82,14 +82,14 @@
                                 <label>Current Location</label>
                                 <input type="text" name="current_location" class="form-control" value="{{ $truck->current_location }}" required>
                             </div>
-                            {{-- <div class="form-group">
+                            <div class="form-group">
                                 <label>Accessories</label>
                                 <select name="accessories[]" class="form-control select2" multiple>
                                     @foreach ($accessories as $accessory)
                                     <option {{ $truck->accessories->contains($accessory->id) ? 'selected' : '' }} value="{{ $accessory->id }}">{{ $accessory->name }}</option>
                                     @endforeach
                                 </select>
-                            </div> --}}
+                            </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">Update</button>
                             </div>

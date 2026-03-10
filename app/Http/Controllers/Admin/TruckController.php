@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\TruckCreateRequest;
 use App\Models\Truck;
+use App\Models\Accessory;
 use App\Models\Dispatcher;
 class TruckController extends Controller
 {
@@ -15,6 +16,7 @@ class TruckController extends Controller
     public function index()
     {
         $trucks = Truck::with('dispatcher')->latest()->paginate(10);
+
         return view("admin.trucks.index", compact('trucks'));
     }
 
@@ -23,28 +25,37 @@ class TruckController extends Controller
      */
     public function create()
     { $dispatchers = Dispatcher::where('is_active', true)->get();
-        return view("admin.trucks.create", compact("dispatchers"));
+         $accessories = Accessory::all();
+        return view("admin.trucks.create", compact("dispatchers","accessories"));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(TruckCreateRequest $request)
+  
+   public function store(Request $request)
     {
-        $truck = new Truck();
-        $truck->dispatcher_id = $request->dispatcher_id;
-        $truck->truck_number = $request->truck_number;
-        $truck->driver_name = $request->driver_name;
-        $truck->driver_phone = $request->driver_phone;
-        $truck->equipment_type = $request->equipment_type;
-        $truck->max_weight = $request->max_weight;
-        $truck->available_from = $request->available_from;
-        $truck->current_location = $request->current_location;
-    
-        $truck->save();
-        return redirect()->route("admin.trucks.index")->with("success","Truck Added Successfully");
-    }
+        $request->validate([
+            'dispatcher_id' => 'required|exists:dispatchers,id',
+            'truck_number' => 'required|max:50',
+            'driver_name' => 'required|max:100',
+            'driver_phone' => 'required|max:20',
+            'equipment_type' => 'required|in:dry_van,flatbed,reefer,step_deck',
+            'max_weight' => 'required|integer',
+            'available_from' => 'required|date',
+            'current_location' => 'required|max:255',
+            'accessories' => 'nullable|array',
+            'accessories.*' => 'exists:accessories,id'
+        ]);
 
+        $truck = Truck::create($request->all());
+        
+        if ($request->has('accessories')) {
+            $truck->accessories()->sync($request->accessories);
+        }
+
+        return redirect()->route('admin.trucks.index')->with('success', 'Truck created successfully.');
+    }
     /**
      * Display the specified resource.
      */
@@ -59,7 +70,8 @@ class TruckController extends Controller
     public function edit(Truck $truck)
     {
         $dispatchers = Dispatcher::where("is_active", true)->get();
-        return view("admin.trucks.edit", compact('truck', 'dispatchers'));
+              $accessories = Accessory::all();
+        return view("admin.trucks.edit", compact('truck', 'dispatchers','accessories'));
     }
 
     /**
@@ -76,13 +88,13 @@ class TruckController extends Controller
             'max_weight' => 'required|integer',
             'available_from' => 'required|date',
             'current_location' => 'required|max:255',
-            // 'accessories' => 'nullable|array',
-            // 'accessories.*' => 'exists:accessories,id'
+            'accessories' => 'nullable|array',
+            'accessories.*' => 'exists:accessories,id'
         ]);
 
         $truck->update($request->all());
         
-        // $truck->accessories()->sync($request->accessories ?? []);
+        $truck->accessories()->sync($request->accessories ?? []);
 
         return redirect()->route('admin.trucks.index')->with('success', 'Truck updated successfully.');
     }

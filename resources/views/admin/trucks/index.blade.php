@@ -42,11 +42,11 @@
                                         <td>{{ $truck->driver_name }}</td>
                                         <td>{{ $truck->dispatcher->name }}</td>
                                         <td>{{ ucfirst(str_replace('_', ' ', $truck->equipment_type)) }}</td>
-                                        {{-- <td>
+                                        <td>
                                             @foreach ($truck->accessories as $accessory)
                                             <span class="badge badge-info">{{ $accessory->name }}</span>
                                             @endforeach
-                                        </td> --}}
+                                        </td>
                                         <td><span class="badge badge-primary">{{ ucfirst($truck->status) }}</span></td>
                                         <td>
                                             <a href="{{ route('admin.trucks.edit', $truck->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>

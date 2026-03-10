@@ -30,8 +30,8 @@ class TruckCreateRequest extends FormRequest
             'max_weight' => 'required|integer',
             'available_from' => 'required|date',
             'current_location' => 'required|max:225',
-            // 'accessories' => 'nullable|array',
-            // 'accessories.*' => 'exists:accessory,id',
+            'accessories' => 'nullable|array',
+            'accessories.*' => 'exists:accessory,id',
 
         ];
     }
