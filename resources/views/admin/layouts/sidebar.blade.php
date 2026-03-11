@@ -89,6 +89,12 @@
                 </ul>
         
     </li>
+        <li class="{{ setSidebarActive(['admin.loads.*']) ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.loads.index') }}">
+                    <i class="fas fa-truck"></i> <span>Loads</span>
+                </a>
+            </li>
+            
 
             
 

@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\DispatcherController;
 use App\Http\Controllers\Admin\TruckController;
 use App\Http\Controllers\Admin\AccessoriesController;
+use App\Http\Controllers\Admin\LoadController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth']], function () {
@@ -18,4 +19,5 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth']], 
     Route::resource('dispatchers', DispatcherController::class);
     Route::resource('trucks',TruckController::class);
     Route::resource('accessories', AccessoriesController::class);
+    Route::resource('loads', LoadController::class);
     });
