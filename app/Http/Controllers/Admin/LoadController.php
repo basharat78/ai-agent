@@ -77,7 +77,7 @@ class LoadController extends Controller
     public function update(load $load, Request $request)
     {
         $request->validate([
-'source' => 'required|max:50',
+            'source' => 'required|max:50',
             'external_id' => 'required|max:100',
             'broker_name' => 'required|max:100',
             'broker_phone' => 'required|max:20',
@@ -101,6 +101,6 @@ class LoadController extends Controller
     public function destroy(load $load)
     {
         $load->delete();
-        return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
+           return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
     }
 }
