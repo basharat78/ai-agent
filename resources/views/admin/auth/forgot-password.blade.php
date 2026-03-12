@@ -64,7 +64,7 @@
                             </div>
                         </div>
                         <div class="simple-footer">
-                            Copyright &copy; Websolutionus {{ date('Y') }}
+                            Copyright &copy; Truck Zap{{ date('Y') }}
                         </div>
                     </div>
                 </div>

@@ -63,6 +63,9 @@
                                             <option {{ $truck->equipment_type == 'flatbed' ? 'selected' : '' }} value="flatbed">Flatbed</option>
                                             <option {{ $truck->equipment_type == 'reefer' ? 'selected' : '' }} value="reefer">Reefer</option>
                                             <option {{ $truck->equipment_type == 'step_deck' ? 'selected' : '' }} value="step_deck">Step Deck</option>
+                                            {{-- <option {{ $truck->equipment_type == 'box_truck' ? 'selected' : '' }} value="box_truck">Box Truck</option>
+                                            <option {{ $truck->equipment_type == 'power_only' ? 'selected' : '' }} value="power_only">Power Only</option> --}}
+
                                         </select>
                                     </div>
                                 </div>
@@ -81,10 +84,29 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                            <div class="col-md-6">
                             <div class="form-group">
                                 <label>Current Location</label>
                                 <input type="text" name="current_location" class="form-control" value="{{ $truck->current_location }}" required>
                             </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                <label>Status</label>
+                                <select name="status" class="form-control">
+                                    <option {{ $truck->status == 'availabele' ? 'selected' : '' }} value="available">Available</option>
+                                    <option {{ $truck->status == 'booked' ? 'selected' : '' }} value="booked">Booked</option>
+                                    <option {{ $truck->status == 'in_transit' ? 'selected' : '' }} value="in_transit">In Transit</option>
+                                    <option {{ $truck->status == 'offline' ? 'selected' : '' }} value="offline">offline</option>
+                                </select>
+                            </div>
+                            </div>
+                            </div>
+
+                        
+
+
                             <div class="form-group">
                                 <label>Accessories</label>
                                 <select name="accessories[]" class="form-control select2" multiple>

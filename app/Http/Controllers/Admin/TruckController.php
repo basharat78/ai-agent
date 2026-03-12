@@ -88,8 +88,10 @@ class TruckController extends Controller
             'max_weight' => 'required|integer',
             'available_from' => 'required|date',
             'current_location' => 'required|max:255',
+            'status' => 'required|in:available,booked,in_transit,offline',
             'accessories' => 'nullable|array',
             'accessories.*' => 'exists:accessories,id'
+
         ]);
 
         $truck->update($request->all());

@@ -120,5 +120,26 @@ class DummyDataSeeder extends Seeder
             'status' => 'matched',
             'ai_score' => 92,
         ]);
+           // 5. Create some Load Matches
+        LoadMatch::updateOrCreate(['load_id' => $load1->id, 'truck_id' => $truck1->id], [
+            'dispatcher_id' => $dispatcher->id,
+            'match_score' => 95,
+            'match_reason' => 'Excellent match! The truck is currently in Chicago (same city as pickup), reducing deadhead to zero. Equipment types align perfectly, and the rate of $4.25/mile is highly profitable for a 282-mile trip.',
+            'status' => 'pending',
+        ]);
+
+        LoadMatch::updateOrCreate(['load_id' => $load2->id, 'truck_id' => $truck2->id], [
+            'dispatcher_id' => $dispatcher->id,
+            'match_score' => 88,
+            'match_reason' => 'Strong match. Truck is in Dallas and load is in Houston (approx 240 miles deadhead). Equipment matches (Flatbed) and the weight is within limit. Profitability is solid at $3.40/mile.',
+            'status' => 'pending',
+        ]);
+
+        LoadMatch::updateOrCreate(['load_id' => $load3->id, 'truck_id' => $truck3->id], [
+            'dispatcher_id' => $dispatcher->id,
+            'match_score' => 92,
+            'match_reason' => 'High quality match. Reefer equipment aligns, location in Atlanta is perfect for this Georgia-based regional run. Weight is manageable and the rate per mile is excellent for the distance.',
+            'status' => 'confirmed',
+        ]);
     }
 }

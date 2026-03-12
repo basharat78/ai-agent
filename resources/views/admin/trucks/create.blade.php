@@ -62,6 +62,8 @@
                                             <option value="flatbed">Flatbed</option>
                                             <option value="reefer">Reefer</option>
                                             <option value="step_deck">Step Deck</option>
+                                            {{-- <option value="box_truck">Box Truck</option>
+                                            <option value="power_only">Power Only</option> --}}
                                         </select>
                                     </div>
                                 </div>

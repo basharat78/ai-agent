@@ -91,11 +91,15 @@
     </li>
         <li class="{{ setSidebarActive(['admin.loads.*']) ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('admin.loads.index') }}">
-                    <i class="fas fa-truck"></i> <span>Loads</span>
+                    <i class="fas fa-box"></i> <span>Loads</span>
                 </a>
             </li>
-            
-
+             <li class="{{ setSidebarActive(['admin.load-matches.*']) ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.load-matches.index') }}">
+                    <i class="fas fa-robot"></i> <span>Load Match</span>
+                </a>
+            </li>
+ 
             
 
         </ul>
